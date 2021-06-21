@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Inline Element Padding</title>
+</head>
+
+<body>
+    <article class="first-q">
+        <div class="article-title-container">
+            <h1>This is about the dimensions of an inline Element</h1>
+        </div>
+        <div class="article-body-container">
+            <p>CSS defines the dimension of an HTML element as its <strong> Height </strong> and <strong>
+                    Width</strong>.
+                Additionally, every HTML element can be represented on
+                <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model"
+                    target="_blank" class="link">the box model</a>, and the box model defines the
+                dimension of
+                an
+                element as:
+            </p>
+            <p>
+            <figure>
+                <blockquote>The total width of the final element of the formula is this: <br>
+
+                    The total width of the element = left padding + width + right padding + border + left + right side
+                    of
+                    the box from the
+                    left + right margin
+                    <br>
+
+                    The total height of the element final calculation formula is this: <br>
+
+                    The total height of the element = height + top padding on the bottom border + padding + + + bottom
+                    border + margin on
+                    lower margins
+                </blockquote>
+                <figcaption>—Source: Width and height of the element,
+                    <cite><a href="http://www.w3big.com/css/css-boxmodel.html" target="_blank"
+                            class="link">w3big.com</a></cite>
+                </figcaption>
+            </figure>
+            </p>
+            <h2>ways to get the height</h2>
+            <p>As the question was about the padding-top, padding-bottom, so adding them theoretically will modify the
+                height,
+                so let's focus on that. </p>
+            <h3>First, a VISUALISATION!</h3>
+            <p>To prove my hypothesis that says that adding padding will add dimensions to the inline HTML
+                element, let's try to visualise that.</p>
+            <p>In all the coming demonstration, a <strong><a
+                        href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span" target="_blank"
+                        class="link">span</a>
+                </strong> which is an HTML inline element will be used to
+                illustrate the cases. </p>
+            <p>Each illustrated span will have a border with CSS properties: </p>
+            <script src="https://gist.github.com/OussamaSALAHOUELHADJ/61e2d222f62987cccd14c2dc8b279bb4.js"
+                class="case"></script>
+            <p>in this way, the illustration of the dimensions of the element will be easy (the borders represent the
+                dimensions here, excluding the margins.</p>
+
+            <h4>1) basic inline element without any padding:</h4>
+            <div class="illustr-container">
+                <p>This is a <span id="controle-test">span</span> without padding</p>
+            </div>
+
+
+            <h4>2) An inline element with <code>padding-top</code> and <code>padding-bottom</code>:</h4>
+            <div class="result-container">
+                <h5>code:</h5>
+                <div class="code-container">
+                    <script src="https://gist.github.com/OussamaSALAHOUELHADJ/fb3d7f69ddb387629268b11f2d074527.js"
+                        class="case"></script>
+                </div>
+            </div>
+            <div class="illustr-container css">
+                <p>This is a <span id="span-with-top-bott-padd" class="case">span</span> with padding</p>
+            </div>
+            <p> We observe that the height of the second case is more than the first one which theoretically shows that
+                adding padding changes the inline element dimensions. </p>
+
+            <h3>Secondly, Let's use JavaScript!</h3>
+            <p>Element in html are more fun, they have a lot of different properties, from what we define like style,
+                class,
+                id and more, to some really "inhuman" properties like rendering, view and a LOT more of bits and bytes!
+            </p>
+            <p> In this part, we will focus only on getting the height.</p>
+            <p>MDN in this article titled: <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Determining_the_dimensions_of_elements"
+                    target="_blank" class="link">Determining
+                    the dimensions of elements</a> defines several ways to get the dimension of an element via the
+                properties of this element, which leads us to another sub-problem: In the exam question wich dimension
+                are
+                meant, considering the several ones that exist:
+            <ul>
+                <li> The offset (<code>offsetHeight</code> and <code>offsetWidth</code>) as they define the "How much
+                    room
+                    does it use up?".
+                </li>
+                <li>The client (<code>clientHeight</code> and <code>clientWidth</code>) as they define the "What's the
+                    size
+                    of the displayed content?"</li>
+                <li>The scroll (<code>scrollHeight</code> and <code>scrollWidth</code>) as they define "How big is the
+                    content?"</li>
+            </ul>
+            <p>without mentioning the calculation by using the viewport or page offset...ect. For more details <a
+                    href="https://docs.microsoft.com/en-us/previous-versions/hh781509(v=vs.85)" target="_blank"
+                    class="link">MSDN:
+                    Measuring Element Dimension and Location</a>.</p>
+
+            </p>
+            <p><strong>Lemma:</strong> it is enough to prove that exists a way to find inline element dimensions with
+                padding to prove that padding adds
+                dimensions to the element.</p>
+
+            <h4>1) How much room does it use up? : the offset</h4>
+            <p>MDN defines <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetHeight"
+                    target="_blank" class="link">offsetHeight</a>as: The <code>HTMLElement.offsetHeight</code>
+                read-only property returns the height of an element, including vertical padding and borders, as an
+                integer.
+            </p>
+            <p>let's try to get a span <code>offsetHeight</code> and adding it to the result box below</p>
+            <div class="illustr-container js">
+                <div class="illustr-js ">
+                    <p>This is a <span id="case-001" class="case">span</span> with padding</p>
+                </div>
+            </div>
+            <div class="result-container">
+                <h5>code:</h5>
+                <div class="code-container">
+                    <script src="https://gist.github.com/OussamaSALAHOUELHADJ/92dc4624063e3eb287a132e7eef07ebf.js"
+                        class="case">
+                        </script>
+                </div>
+                <h5>result:</h5>
+                <div class="result">
+                    <code id="result-001"></code>
+                </div>
+
+            </div>
+
+            <h4>2) What's the size of the displayed content? : clientHeight</h4>
+            <p>MDN defines <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/clientHeight"
+                    target="_blank" class="link">clientHeight</a>as: The <code>Element.clientHeight</code>
+                read-only property is zero for elements with no CSS or inline layout boxes; otherwise, it's the inner
+                height
+                of an element in pixels. It includes padding but excludes borders, margins, and horizontal scrollbars
+                (if
+                present).<br>clientHeight can be calculated as: CSS <code>height</code> + CSS <code>padding</code> -
+                height
+                of horizontal scrollbar (if present).
+            </p>
+            <p>let's try to get a span <code>offsetHeight</code> and adding it to the result box below</p>
+            <div class="illustr-container js">
+                <div class="illustr-js ">
+                    <p>This is a <span id="case-002" class="case">span</span> with padding</p>
+                </div>
+            </div>
+            <div class="result-container">
+                <h5>code:</h5>
+                <div class="code-container">
+                    <script src="https://gist.github.com/OussamaSALAHOUELHADJ/aad5824af50936daabb65cd51ddd2e0a.js"
+                        class="case"></script>
+                </div>
+                <h5>result:</h5>
+                <div class="result">
+                    <code id="result-002"></code>
+                </div>
+            </div>
+            <br>
+            <p>From the two cases, we observe that the first case calculate the total height of the
+                <strong>ELEMENT</strong> where the
+                second method
+                calculates the height of just the content which is just a part of an element, and I think that what was
+                the question
+                about, however, the question cites clearly an <strong><em>Inline HTML Element</em></strong>, and not
+                just
+                the content.
+            </p>
+
+        </div>
+
+    </article>
+    <script src="app.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.6.8/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/8.6.8/firebase-analytics.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+</body>
+
+</html>
